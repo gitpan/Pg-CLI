@@ -19,10 +19,19 @@
             "ExtUtils::MakeMaker" : "6.31"
          }
       },
+      "runtime" : {
+         "requires" : {
+            "IPC::System::Simple" : 0,
+            "Moose" : 0,
+            "MooseX::Params::Validate" : 0,
+            "MooseX::SemiAffordanceAccessor" : 0,
+            "MooseX::Types" : 0,
+            "namespace::autoclean" : 0
+         }
+      },
       "test" : {
          "requires" : {
-            "Test::More" : "0.88",
-            "Test::Most" : 0
+            "Test::More" : "0.88"
          }
       }
    },
@@ -38,6 +47,6 @@
          "web" : "http://hg.urth.org/hg/Pg-CLI"
       }
    },
-   "version" : "0.01"
+   "version" : "0.02"
 }
 

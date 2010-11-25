@@ -1,6 +1,6 @@
 package Pg::CLI::Role::Command;
 BEGIN {
-  $Pg::CLI::Role::Command::VERSION = '0.01';
+  $Pg::CLI::Role::Command::VERSION = '0.02';
 }
 
 use Moose::Role;
@@ -65,7 +65,7 @@ Pg::CLI::Role::Command
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 AUTHOR
 

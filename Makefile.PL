@@ -12,8 +12,7 @@ my %WriteMakefileArgs = (
   'ABSTRACT' => 'Run Postgres CLI utilities',
   'AUTHOR' => 'Dave Rolsky <autarch@urth.org>',
   'BUILD_REQUIRES' => {
-    'Test::More' => '0.88',
-    'Test::Most' => '0'
+    'Test::More' => '0.88'
   },
   'CONFIGURE_REQUIRES' => {
     'ExtUtils::MakeMaker' => '6.31'
@@ -22,8 +21,15 @@ my %WriteMakefileArgs = (
   'EXE_FILES' => [],
   'LICENSE' => 'artistic_2',
   'NAME' => 'Pg::CLI',
-  'PREREQ_PM' => {},
-  'VERSION' => '0.01',
+  'PREREQ_PM' => {
+    'IPC::System::Simple' => '0',
+    'Moose' => '0',
+    'MooseX::Params::Validate' => '0',
+    'MooseX::SemiAffordanceAccessor' => '0',
+    'MooseX::Types' => '0',
+    'namespace::autoclean' => '0'
+  },
+  'VERSION' => '0.02',
   'test' => {
     'TESTS' => 't/*.t'
   }

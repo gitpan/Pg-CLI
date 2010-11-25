@@ -1,6 +1,6 @@
 package Pg::CLI::psql;
 BEGIN {
-  $Pg::CLI::psql::VERSION = '0.01';
+  $Pg::CLI::psql::VERSION = '0.02';
 }
 
 use Moose;
@@ -66,7 +66,7 @@ Pg::CLI::psql - Wrapper for the F<psql> utility
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
