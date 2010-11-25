@@ -1,0 +1,43 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.61.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 e4513436338b9d939967ef6b4ae6280afbda8757 Changes
+SHA1 549ca48dc16f2fbff21da8c4500225da6cc5b42a INSTALL
+SHA1 23c628b4a8a36738405ccdacaeb912d2e727b4c0 LICENSE
+SHA1 a1e8b1aa1b8ba8717dd9c8b170fde860d37bab97 MANIFEST
+SHA1 9a716012630d98efcb671b8db1738a19ffb0ebe6 META.json
+SHA1 867c6ba30bc3cfbaf2796ab37c769c6e416a63b6 META.yml
+SHA1 16d016b0dee6bd87dc79999f0c9831ebadc0209f Makefile.PL
+SHA1 49a5acdf1b64cdda16ab78d48f45f161afd5ee4c README
+SHA1 d93c2090eb49ee2083c63599238754fceedaac7d dist.ini
+SHA1 44ecfac1d9fda10b8010c6b9114532439be2a2fb lib/Pg/CLI.pm
+SHA1 7c28984b6f95f110ee5a0b0806999248545e7c91 lib/Pg/CLI/Role/Command.pm
+SHA1 1d15988e77f6b82e8f732aa98bf0a923e3f8e9c3 lib/Pg/CLI/pg_dump.pm
+SHA1 b913227faa36a2fc172173e2755fbcc53819ec62 lib/Pg/CLI/psql.pm
+SHA1 46449b89e8185343c9002dc3b0f347c98aa4de8c t/lib/Test/PgCLI.pm
+SHA1 ef0b1f66305a36becaf5dbdb24d7f0f38abe473d t/pg_dump.t
+SHA1 2c6e6a475e4e577367b981f2deecd5753d440082 t/psql.t
+SHA1 a032c41ef6887fab1b900669c2d304fab46680e2 t/release-eol.t
+SHA1 455d1dd1867212a665ad5ea4126b572411de300c t/release-no-tabs.t
+SHA1 9433c240fe590bc404ab68ff63984df763e347ed t/release-pod-coverage.t
+SHA1 b30cbdfaf935017c4568c0c91b242438cb87786e t/release-pod-syntax.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.10 (GNU/Linux)
+
+iEYEARECAAYFAkzt4AcACgkQIgMCsV8qvRLvdQCfc0sQzE4Pr5qHTp2Zwi4o/jtT
+nd4An1HMWnhsXlzP7rDCgCv7Qgxw+2Pu
+=/+RV
+-----END PGP SIGNATURE-----
