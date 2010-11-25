@@ -1,6 +1,6 @@
-package Pg::CLI::Role::Command;
+package Pg::CLI::Role::Connects;
 BEGIN {
-  $Pg::CLI::Role::Command::VERSION = '0.03';
+  $Pg::CLI::Role::Connects::VERSION = '0.04';
 }
 
 use Moose::Role;
@@ -55,29 +55,3 @@ sub _connect_options {
 }
 
 1;
-
-__END__
-=pod
-
-=head1 NAME
-
-Pg::CLI::Role::Command
-
-=head1 VERSION
-
-version 0.03
-
-=head1 AUTHOR
-
-Dave Rolsky <autarch@urth.org>
-
-=head1 COPYRIGHT AND LICENSE
-
-This software is Copyright (c) 2010 by Dave Rolsky.
-
-This is free software, licensed under:
-
-  The Artistic License 2.0
-
-=cut
-

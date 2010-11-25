@@ -1,6 +1,6 @@
 package Pg::CLI::psql;
 BEGIN {
-  $Pg::CLI::psql::VERSION = '0.03';
+  $Pg::CLI::psql::VERSION = '0.04';
 }
 
 use Moose;
@@ -12,7 +12,7 @@ use MooseX::SemiAffordanceAccessor;
 use MooseX::Types::Moose qw( ArrayRef Bool Str );
 use MooseX::Types::Path::Class qw( File );
 
-with 'Pg::CLI::Role::Command';
+with qw( Pg::CLI::Role::Connects Pg::CLI::Role::Executable );
 
 has quiet => (
     is      => 'ro',
@@ -67,7 +67,7 @@ Pg::CLI::psql - Wrapper for the F<psql> utility
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -101,6 +101,11 @@ This class provides the following methods:
 The constructor accepts a number of parameters:
 
 =over 4
+
+=item * executable
+
+The path to F<psql>. By default, this will look for F<psql> in your path and
+throw an error if it cannot be found.
 
 =item * username
 
@@ -155,5 +160,4 @@ This is free software, licensed under:
 
 
 __END__
-
 

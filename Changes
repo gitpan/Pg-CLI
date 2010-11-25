@@ -1,3 +1,12 @@
+0.04    2010-11-25
+
+- Added a new class, Pg::CLI::pg_config.
+
+- All classes now take an executable parameter so you can explicitly set the
+  path to the executable. By default, classes look in the current path, and
+  die if they cannot find the relevant executable.
+
+
 0.03    2010-11-25
 
 - The psql execute_file method now accepts a Path::Class::File object for the

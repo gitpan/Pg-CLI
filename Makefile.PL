@@ -22,6 +22,7 @@ my %WriteMakefileArgs = (
   'LICENSE' => 'artistic_2',
   'NAME' => 'Pg::CLI',
   'PREREQ_PM' => {
+    'File::Which' => '0',
     'IPC::System::Simple' => '0',
     'Moose' => '0',
     'MooseX::Params::Validate' => '0',
@@ -30,7 +31,7 @@ my %WriteMakefileArgs = (
     'MooseX::Types::Path::Class' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '0.03',
+  'VERSION' => '0.04',
   'test' => {
     'TESTS' => 't/*.t'
   }

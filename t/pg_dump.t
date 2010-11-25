@@ -8,7 +8,7 @@ use Test::More 0.88;
 use Test::PgCLI;
 
 {
-    my $pg_dump = Pg::CLI::pg_dump->new();
+    my $pg_dump = Pg::CLI::pg_dump->new( executable => 'foo' );
 
     test_command(
         'pg_dump',
@@ -42,10 +42,11 @@ use Test::PgCLI;
 
 {
     my $pg_dump = Pg::CLI::pg_dump->new(
-        username => 'foo',
-        password => 'bar',
-        host     => 'foo.example.com',
-        port     => 5141,
+        executable => 'foo',
+        username   => 'foo',
+        password   => 'bar',
+        host       => 'foo.example.com',
+        port       => 5141,
     );
 
     test_command(

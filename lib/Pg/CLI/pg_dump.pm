@@ -1,6 +1,6 @@
 package Pg::CLI::pg_dump;
 BEGIN {
-  $Pg::CLI::pg_dump::VERSION = '0.03';
+  $Pg::CLI::pg_dump::VERSION = '0.04';
 }
 
 use Moose;
@@ -11,7 +11,7 @@ use MooseX::Params::Validate qw( validated_list );
 use MooseX::SemiAffordanceAccessor;
 use MooseX::Types::Moose qw( ArrayRef Bool Str );
 
-with 'Pg::CLI::Role::Command';
+with qw( Pg::CLI::Role::Connects Pg::CLI::Role::Executable );
 
 sub run {
     my $self = shift;
@@ -45,7 +45,7 @@ Pg::CLI::pg_dump - Wrapper for the F<pg_dump> utility
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -74,6 +74,11 @@ This class provides the following methods:
 The constructor accepts a number of parameters:
 
 =over 4
+
+=item * executable
+
+The path to F<pg_dump>. By default, this will look for F<pg_dump> in your path
+and throw an error if it cannot be found.
 
 =item * username
 
@@ -118,5 +123,4 @@ This is free software, licensed under:
 
 
 __END__
-
 

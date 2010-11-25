@@ -14,6 +14,7 @@ meta-spec:
   version: 1.4
 name: Pg-CLI
 requires:
+  File::Which: 0
   IPC::System::Simple: 0
   Moose: 0
   MooseX::Params::Validate: 0
@@ -24,4 +25,4 @@ requires:
 resources:
   bugtracker: http://rt.cpan.org/NoAuth/Bugs.html?Dist=Pg-CLI
   repository: http://hg.urth.org/hg/Pg-CLI
-version: 0.03
+version: 0.04

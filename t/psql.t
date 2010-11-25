@@ -8,7 +8,7 @@ use Test::More 0.88;
 use Test::PgCLI;
 
 {
-    my $psql = Pg::CLI::psql->new();
+    my $psql = Pg::CLI::psql->new( executable => 'foo' );
 
     test_command(
         'psql',
@@ -73,10 +73,11 @@ use Test::PgCLI;
 
 {
     my $psql = Pg::CLI::psql->new(
-        username => 'foo',
-        password => 'bar',
-        host     => 'foo.example.com',
-        port     => 5141,
+        executable => 'foo',
+        username   => 'foo',
+        password   => 'bar',
+        host       => 'foo.example.com',
+        port       => 5141,
     );
 
     test_command(
