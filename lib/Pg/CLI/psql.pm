@@ -1,6 +1,6 @@
 package Pg::CLI::psql;
 BEGIN {
-  $Pg::CLI::psql::VERSION = '0.02';
+  $Pg::CLI::psql::VERSION = '0.03';
 }
 
 use Moose;
@@ -10,6 +10,7 @@ use namespace::autoclean;
 use MooseX::Params::Validate qw( validated_hash validated_list );
 use MooseX::SemiAffordanceAccessor;
 use MooseX::Types::Moose qw( ArrayRef Bool Str );
+use MooseX::Types::Path::Class qw( File );
 
 with 'Pg::CLI::Role::Command';
 
@@ -24,11 +25,11 @@ sub execute_file {
     my %p    = validated_hash(
         \@_,
         database => { isa => Str },
-        file     => { isa => Str },
-        options  => { isa => ArrayRef [Str], default => [] },
+        file     => { isa => Str | File  },
+        options  => { isa => ArrayRef [Str], optional => 1 },
     );
 
-    push @{ $p{options} }, '-f', delete $p{file};
+    push @{ $p{options} }, '-f', ( delete $p{file} ) . q{};
 
     $self->run(%p);
 }
@@ -66,7 +67,7 @@ Pg::CLI::psql - Wrapper for the F<psql> utility
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 

@@ -27,9 +27,10 @@ my %WriteMakefileArgs = (
     'MooseX::Params::Validate' => '0',
     'MooseX::SemiAffordanceAccessor' => '0',
     'MooseX::Types' => '0',
+    'MooseX::Types::Path::Class' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '0.02',
+  'VERSION' => '0.03',
   'test' => {
     'TESTS' => 't/*.t'
   }

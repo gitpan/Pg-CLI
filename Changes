@@ -1,3 +1,12 @@
+0.03    2010-11-25
+
+- The psql execute_file method now accepts a Path::Class::File object for the
+  file name.
+
+- The psql execute_file method reused the same default ref for options
+  repeatedly, causing weird bugs.
+
+
 0.02    2010-11-25
 
 - Forget to list prereqs.

@@ -19,8 +19,9 @@ requires:
   MooseX::Params::Validate: 0
   MooseX::SemiAffordanceAccessor: 0
   MooseX::Types: 0
+  MooseX::Types::Path::Class: 0
   namespace::autoclean: 0
 resources:
   bugtracker: http://rt.cpan.org/NoAuth/Bugs.html?Dist=Pg-CLI
   repository: http://hg.urth.org/hg/Pg-CLI
-version: 0.02
+version: 0.03
