@@ -1,6 +1,6 @@
 package Pg::CLI::psql;
 BEGIN {
-  $Pg::CLI::psql::VERSION = '0.04';
+  $Pg::CLI::psql::VERSION = '0.05';
 }
 
 use Moose;
@@ -67,7 +67,7 @@ Pg::CLI::psql - Wrapper for the F<psql> utility
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -139,6 +139,14 @@ or more options that indicate what psql should do.
 
 This method executes the specified file against the database. You can also
 pass additional options via the C<options> parameter.
+
+=head2 $psql->version()
+
+Returns a the three part version as a string.
+
+=head2 $psql->two_part_version()
+
+Returns the first two decimal numbers in the version.
 
 =head1 BUGS
 

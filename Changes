@@ -1,3 +1,10 @@
+0.05    2010-11-27
+
+- The command line arguments for pg_dump and psql included -w, which only
+  works on 8.4+. Now we check to see what version of the command line
+  utilities we have, and only add -w when it's allowed. Reported by Getty.
+
+
 0.04    2010-11-25
 
 - Added a new class, Pg::CLI::pg_config.

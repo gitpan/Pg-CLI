@@ -1,6 +1,6 @@
 package Pg::CLI::Role::Connects;
 BEGIN {
-  $Pg::CLI::Role::Connects::VERSION = '0.04';
+  $Pg::CLI::Role::Connects::VERSION = '0.05';
 }
 
 use Moose::Role;
@@ -9,6 +9,8 @@ use namespace::autoclean;
 
 use IPC::System::Simple qw( systemx );
 use MooseX::Types::Moose qw( Str );
+
+with 'Pg::CLI::Role::HasVersion';
 
 for my $attr (qw( username password host port )) {
     has $attr => (
@@ -26,7 +28,7 @@ sub _execute_command {
     local $ENV{PGPASSWORD} = $self->password()
         if $self->_has_password();
 
-    $self->_call_systemx($cmd,@opts);
+    $self->_call_systemx( $cmd, @opts );
 }
 
 # This is a separate sub to provide something we can override in testing
@@ -49,7 +51,8 @@ sub _connect_options {
     push @options, '-p', $self->port()
         if $self->_has_port();
 
-    push @options, '-w';
+    push @options, '-w'
+        if $self->two_part_version >= 8.4;
 
     return @options;
 }

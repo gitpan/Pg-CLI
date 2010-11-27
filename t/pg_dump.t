@@ -82,4 +82,35 @@ use Test::PgCLI;
     );
 }
 
+{
+    my $pg_dump = Pg::CLI::pg_dump->new(
+        executable => 'foo',
+        _version   => '8.3.2',
+    );
+
+    test_command(
+        'pg_dump',
+        sub {
+            $pg_dump->run(
+                database => 'Foo',
+                options  => [ '-c', 'SELECT 1 FROM foo' ]
+            );
+        },
+        sub {
+            shift;
+            my @cmd = @_;
+
+            is_deeply(
+                \@cmd,
+                [
+                    'pg_dump',
+                    '-c', 'SELECT 1 FROM foo',
+                    'Foo'
+                ],
+                'command includes connection info, but no -w for Pg < 8.4'
+            );
+        },
+    );
+}
+
 done_testing();
