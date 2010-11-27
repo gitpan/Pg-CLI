@@ -1,6 +1,6 @@
 package Pg::CLI::pg_dump;
 BEGIN {
-  $Pg::CLI::pg_dump::VERSION = '0.06';
+  $Pg::CLI::pg_dump::VERSION = '0.07';
 }
 
 use Moose;
@@ -45,7 +45,7 @@ Pg::CLI::pg_dump - Wrapper for the F<pg_dump> utility
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 

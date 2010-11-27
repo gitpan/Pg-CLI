@@ -1,6 +1,6 @@
 package Pg::CLI::Role::Connects;
 BEGIN {
-  $Pg::CLI::Role::Connects::VERSION = '0.06';
+  $Pg::CLI::Role::Connects::VERSION = '0.07';
 }
 
 use Moose::Role;

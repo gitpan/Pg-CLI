@@ -1,3 +1,9 @@
+0.07    2010-11-27
+
+- The version check caused the output of "$cmd --version" to be visible,
+  instead of being captured.
+
+
 0.06    2010-11-27
 
 - Added a new parameter, require_ssl, for pg_dump and psql. If this is true,

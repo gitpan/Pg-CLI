@@ -1,6 +1,6 @@
 package Pg::CLI::pg_config;
 BEGIN {
-  $Pg::CLI::pg_config::VERSION = '0.06';
+  $Pg::CLI::pg_config::VERSION = '0.07';
 }
 
 use Moose;
@@ -93,7 +93,7 @@ Pg::CLI::pg_config - Wrapper for the F<psql> utility
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
