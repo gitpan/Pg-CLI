@@ -1,6 +1,6 @@
 package Pg::CLI::pg_dump;
 BEGIN {
-  $Pg::CLI::pg_dump::VERSION = '0.05';
+  $Pg::CLI::pg_dump::VERSION = '0.06';
 }
 
 use Moose;
@@ -45,7 +45,7 @@ Pg::CLI::pg_dump - Wrapper for the F<pg_dump> utility
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -95,6 +95,11 @@ The host to use when connecting to the database. Optional.
 =item * port
 
 The port to use when connecting to the database. Optional.
+
+=item * require_ssl
+
+If this is true, then the C<PGSSLMODE> environment variable will be set to
+"require" when connecting to the database.
 
 =back
 

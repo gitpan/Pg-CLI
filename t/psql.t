@@ -26,6 +26,10 @@ use Test::PgCLI;
                 !$ENV{PGPASSWORD},
                 'password is not set in environment when command runs'
             );
+            ok(
+                !$ENV{PGSSLMODE},
+                'ssl mode is not set in environment when command runs'
+            );
             is_deeply(
                 \@cmd,
                 [
@@ -73,11 +77,12 @@ use Test::PgCLI;
 
 {
     my $psql = Pg::CLI::psql->new(
-        executable => 'foo',
-        username   => 'foo',
-        password   => 'bar',
-        host       => 'foo.example.com',
-        port       => 5141,
+        executable  => 'foo',
+        username    => 'foo',
+        password    => 'bar',
+        host        => 'foo.example.com',
+        port        => 5141,
+        require_ssl => 1,
     );
 
     test_command(
@@ -95,6 +100,10 @@ use Test::PgCLI;
             is(
                 $ENV{PGPASSWORD}, 'bar',
                 'password is set in environment when command runs'
+            );
+            is(
+                $ENV{PGSSLMODE}, 'require',
+                'ssl mode is set in environment when command runs'
             );
             is_deeply(
                 \@cmd,

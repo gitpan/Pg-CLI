@@ -1,3 +1,9 @@
+0.06    2010-11-27
+
+- Added a new parameter, require_ssl, for pg_dump and psql. If this is true,
+  then the PGSSLMODE env var is set to "require" when connecting to the dbms.
+
+
 0.05    2010-11-27
 
 - The command line arguments for pg_dump and psql included -w, which only

@@ -1,6 +1,6 @@
 package Pg::CLI::Role::Connects;
 BEGIN {
-  $Pg::CLI::Role::Connects::VERSION = '0.05';
+  $Pg::CLI::Role::Connects::VERSION = '0.06';
 }
 
 use Moose::Role;
@@ -20,6 +20,12 @@ for my $attr (qw( username password host port )) {
     );
 }
 
+has require_ssl => (
+    is      => 'ro',
+    isa     => 'Bool',
+    default => 0,
+);
+
 sub _execute_command {
     my $self = shift;
     my $cmd  = shift;
@@ -27,6 +33,9 @@ sub _execute_command {
 
     local $ENV{PGPASSWORD} = $self->password()
         if $self->_has_password();
+
+    local $ENV{PGSSLMODE} = 'require'
+        if $self->require_ssl();
 
     $self->_call_systemx( $cmd, @opts );
 }

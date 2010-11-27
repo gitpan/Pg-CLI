@@ -1,6 +1,6 @@
 package Pg::CLI::psql;
 BEGIN {
-  $Pg::CLI::psql::VERSION = '0.05';
+  $Pg::CLI::psql::VERSION = '0.06';
 }
 
 use Moose;
@@ -67,7 +67,7 @@ Pg::CLI::psql - Wrapper for the F<psql> utility
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -122,6 +122,11 @@ The host to use when connecting to the database. Optional.
 =item * port
 
 The port to use when connecting to the database. Optional.
+
+=item * require_ssl
+
+If this is true, then the C<PGSSLMODE> environment variable will be set to
+"require" when connecting to the database.
 
 =item * quiet
 
