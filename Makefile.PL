@@ -4,36 +4,40 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'Run Postgres CLI utilities',
-  'AUTHOR' => 'Dave Rolsky <autarch@urth.org>',
-  'BUILD_REQUIRES' => {
-    'Test::More' => '0.88'
+  "ABSTRACT" => "Run Postgres CLI utilities",
+  "AUTHOR" => "Dave Rolsky <autarch\@urth.org>",
+  "BUILD_REQUIRES" => {
+    "Exporter" => 0,
+    "Test::More" => "0.88",
+    "strict" => 0,
+    "warnings" => 0
   },
-  'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
   },
-  'DISTNAME' => 'Pg-CLI',
-  'EXE_FILES' => [],
-  'LICENSE' => 'artistic_2',
-  'NAME' => 'Pg::CLI',
-  'PREREQ_PM' => {
-    'File::Which' => '0',
-    'IPC::System::Simple' => '0',
-    'Moose' => '0',
-    'MooseX::Params::Validate' => '0',
-    'MooseX::SemiAffordanceAccessor' => '0',
-    'MooseX::Types' => '0',
-    'MooseX::Types::Path::Class' => '0',
-    'namespace::autoclean' => '0'
+  "DISTNAME" => "Pg-CLI",
+  "EXE_FILES" => [],
+  "LICENSE" => "artistic_2",
+  "NAME" => "Pg::CLI",
+  "PREREQ_PM" => {
+    "File::Which" => 0,
+    "IPC::Run3" => 0,
+    "Moose" => 0,
+    "Moose::Role" => 0,
+    "MooseX::Params::Validate" => 0,
+    "MooseX::SemiAffordanceAccessor" => 0,
+    "MooseX::Types::Moose" => 0,
+    "MooseX::Types::Path::Class" => 0,
+    "namespace::autoclean" => 0
   },
-  'VERSION' => '0.07',
-  'test' => {
-    'TESTS' => 't/*.t'
+  "VERSION" => "0.08",
+  "test" => {
+    "TESTS" => "t/*.t"
   }
 );
 

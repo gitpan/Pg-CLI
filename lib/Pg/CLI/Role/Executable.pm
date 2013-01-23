@@ -1,6 +1,6 @@
 package Pg::CLI::Role::Executable;
-BEGIN {
-  $Pg::CLI::Role::Executable::VERSION = '0.07';
+{
+  $Pg::CLI::Role::Executable::VERSION = '0.08';
 }
 
 use Moose::Role;

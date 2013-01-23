@@ -1,13 +1,13 @@
 package Pg::CLI::Role::HasVersion;
-BEGIN {
-  $Pg::CLI::Role::HasVersion::VERSION = '0.07';
+{
+  $Pg::CLI::Role::HasVersion::VERSION = '0.08';
 }
 
 use Moose::Role;
 
 use namespace::autoclean;
 
-use IPC::System::Simple qw( capturex );
+use IPC::Run3 qw( run3 );
 use MooseX::Types::Moose qw( Str );
 use Pg::CLI::pg_config;
 
@@ -30,7 +30,16 @@ has two_part_version => (
 sub _build_version {
     my $self = shift;
 
-    my $output = capturex( $self->executable(), '--version' );
+    my ( $output, $error );
+
+    run3(
+        [ $self->executable(), '--version' ],
+        \undef,
+        \$output,
+        \$error,
+    );
+
+    die $error if $error;
 
     return $1 if $output =~ /(\d\.\d\.\d)/;
 }

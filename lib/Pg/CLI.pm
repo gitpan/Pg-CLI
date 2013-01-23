@@ -1,13 +1,13 @@
 package Pg::CLI;
-BEGIN {
-  $Pg::CLI::VERSION = '0.07';
+{
+  $Pg::CLI::VERSION = '0.08';
 }
 
 1;
 
 # ABSTRACT: Run Postgres CLI utilities
 
-
+__END__
 
 =pod
 
@@ -17,7 +17,7 @@ Pg::CLI - Run Postgres CLI utilities
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 
@@ -44,6 +44,8 @@ classes:
 =item * L<Pg::CLI::psql>
 
 =item * L<Pg::CLI::pg_dump>
+
+=item * L<Pg::CLI::pg_config>
 
 =back
 
@@ -77,14 +79,10 @@ Dave Rolsky <autarch@urth.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2010 by Dave Rolsky.
+This software is Copyright (c) 2013 by Dave Rolsky.
 
 This is free software, licensed under:
 
-  The Artistic License 2.0
+  The Artistic License 2.0 (GPL Compatible)
 
 =cut
-
-
-__END__
-

@@ -1,14 +1,16 @@
 package Pg::CLI::Role::Connects;
-BEGIN {
-  $Pg::CLI::Role::Connects::VERSION = '0.07';
+{
+  $Pg::CLI::Role::Connects::VERSION = '0.08';
 }
 
 use Moose::Role;
 
 use namespace::autoclean;
 
-use IPC::System::Simple qw( systemx );
-use MooseX::Types::Moose qw( Str );
+use IPC::Run3 qw( run3 );
+use MooseX::Params::Validate qw( validated_hash validated_list );
+use MooseX::SemiAffordanceAccessor;
+use MooseX::Types::Moose qw( ArrayRef Bool Defined Str );
 
 with 'Pg::CLI::Role::HasVersion';
 
@@ -26,10 +28,37 @@ has require_ssl => (
     default => 0,
 );
 
+sub run {
+    my $self = shift;
+    my ( $database, $options, $stdin, $stdout, $stderr ) = validated_list(
+        \@_,
+        database => { isa => Str },
+        options  => {
+            isa => ArrayRef [Str], default => [],
+        },
+        stdin  => { isa => Defined, optional => 1 },
+        stdout => { isa => Defined, optional => 1 },
+        stderr => { isa => Defined, optional => 1 },
+    );
+
+    $self->_execute_command(
+        [
+            $self->executable(),
+            $self->_connect_options(),
+            $self->_run_options(),
+            @{$options},
+            $database,
+        ],
+        $stdin, $stdout, $stderr,
+    );
+}
+
+sub _run_options {
+    return;
+}
+
 sub _execute_command {
     my $self = shift;
-    my $cmd  = shift;
-    my @opts = @_;
 
     local $ENV{PGPASSWORD} = $self->password()
         if $self->_has_password();
@@ -37,13 +66,23 @@ sub _execute_command {
     local $ENV{PGSSLMODE} = 'require'
         if $self->require_ssl();
 
-    $self->_call_systemx( $cmd, @opts );
+    $self->_call_run3(@_);
 }
 
 # This is a separate sub to provide something we can override in testing
-sub _call_systemx {
+sub _call_run3 {
     shift;
-    systemx(@_);
+    my $cmd    = shift;
+    my $stdin  = shift || \undef;
+    my $stdout = shift || \undef;
+    my $stderr = shift || \undef;
+
+    run3(
+        $cmd,
+        $stdin,
+        $stdout,
+        $stderr,
+    );
 }
 
 sub _connect_options {

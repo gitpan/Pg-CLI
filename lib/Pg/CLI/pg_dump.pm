@@ -1,6 +1,6 @@
 package Pg::CLI::pg_dump;
-BEGIN {
-  $Pg::CLI::pg_dump::VERSION = '0.07';
+{
+  $Pg::CLI::pg_dump::VERSION = '0.08';
 }
 
 use Moose;
@@ -13,29 +13,13 @@ use MooseX::Types::Moose qw( ArrayRef Bool Str );
 
 with qw( Pg::CLI::Role::Connects Pg::CLI::Role::Executable );
 
-sub run {
-    my $self = shift;
-    my ( $database, $options ) = validated_list(
-        \@_,
-        database => { isa => Str },
-        options  => { isa => ArrayRef [Str], default => [] },
-    );
-
-    $self->_execute_command(
-        'pg_dump',
-        $self->_connect_options(),
-        @{$options},
-        $database,
-    );
-}
-
 __PACKAGE__->meta()->make_immutable();
 
 1;
 
 # ABSTRACT: Wrapper for the F<pg_dump> utility
 
-
+__END__
 
 =pod
 
@@ -45,7 +29,7 @@ Pg::CLI::pg_dump - Wrapper for the F<pg_dump> utility
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 
@@ -59,6 +43,13 @@ version 0.07
   $pg_dump->run(
       database => 'database',
       options  => [ '-C' ],
+  );
+
+  my $sql;
+  $pg_dump->run(
+      database => 'database',
+      options  => [ '-C' ],
+      stdout   => \$sql,
   );
 
 =head1 DESCRIPTION
@@ -108,6 +99,13 @@ If this is true, then the C<PGSSLMODE> environment variable will be set to
 This method dumps the specified database. Any values passed in C<options> will
 be passed on to pg_dump.
 
+This method also accepts optional C<stdin>, C<stdout>, and C<stderr>
+parameters. These parameters can be any defined value that could be passed as
+the relevant parameter to L<IPC::Run3>'s C<run3> subroutine.
+
+Notably, you can capture the dump output in a scalar reference for the
+C<stdout> output.
+
 =head2 $pg_dump->version()
 
 Returns a the three part version as a string.
@@ -126,14 +124,10 @@ Dave Rolsky <autarch@urth.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2010 by Dave Rolsky.
+This software is Copyright (c) 2013 by Dave Rolsky.
 
 This is free software, licensed under:
 
-  The Artistic License 2.0
+  The Artistic License 2.0 (GPL Compatible)
 
 =cut
-
-
-__END__
-

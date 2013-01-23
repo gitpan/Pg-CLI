@@ -1,3 +1,11 @@
+0.08    2013-01-23
+
+- The command running code now uses IPC::Run3::run3, so you can pass stdin,
+  stdout, and stderr parameters to the psql and pg_dump ->run() methods. This
+  is useful for passing in SQL to psql or capturing output from pg_dump, as
+  well as capturing error output.
+
+
 0.07    2010-11-27
 
 - The version check caused the output of "$cmd --version" to be visible,

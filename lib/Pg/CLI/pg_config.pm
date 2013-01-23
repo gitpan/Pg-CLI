@@ -1,6 +1,6 @@
 package Pg::CLI::pg_config;
-BEGIN {
-  $Pg::CLI::pg_config::VERSION = '0.07';
+{
+  $Pg::CLI::pg_config::VERSION = '0.08';
 }
 
 use Moose;
@@ -74,7 +74,11 @@ sub _build_config_info {
 
 # Separate method so it can be overridden for tests
 sub _pg_config_output {
-    return `pg_config`;
+    my $self = shift;
+
+    my $command = $self->executable();
+
+    return `$command`;
 }
 
 __PACKAGE__->meta()->make_immutable();
@@ -83,7 +87,7 @@ __PACKAGE__->meta()->make_immutable();
 
 # ABSTRACT: Wrapper for the F<psql> utility
 
-
+__END__
 
 =pod
 
@@ -93,7 +97,7 @@ Pg::CLI::pg_config - Wrapper for the F<psql> utility
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 
@@ -187,14 +191,10 @@ Dave Rolsky <autarch@urth.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2010 by Dave Rolsky.
+This software is Copyright (c) 2013 by Dave Rolsky.
 
 This is free software, licensed under:
 
-  The Artistic License 2.0
+  The Artistic License 2.0 (GPL Compatible)
 
 =cut
-
-
-__END__
-

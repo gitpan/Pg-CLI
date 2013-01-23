@@ -17,7 +17,7 @@ sub test_command {
     no warnings 'redefine';
     no strict 'refs';
 
-    local *{ $class . '::_call_systemx' }  = $tests;
+    local *{ $class . '::_call_run3' }  = $tests;
     local *{ $class . '::_build_version' } = sub { '8.4.5' };
 
     $run->();

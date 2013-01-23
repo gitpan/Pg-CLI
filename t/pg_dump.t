@@ -8,7 +8,7 @@ use Test::More 0.88;
 use Test::PgCLI;
 
 {
-    my $pg_dump = Pg::CLI::pg_dump->new( executable => 'foo' );
+    my $pg_dump = Pg::CLI::pg_dump->new( executable => 'pg_dump' );
 
     test_command(
         'pg_dump',
@@ -20,14 +20,14 @@ use Test::PgCLI;
         },
         sub {
             shift;
-            my @cmd = @_;
+            my $cmd = shift;
 
             ok(
                 !$ENV{PGPASSWORD},
                 'password is not set in environment when command runs'
             );
             is_deeply(
-                \@cmd,
+                $cmd,
                 [
                     'pg_dump',
                     '-w',
@@ -42,7 +42,7 @@ use Test::PgCLI;
 
 {
     my $pg_dump = Pg::CLI::pg_dump->new(
-        executable => 'foo',
+        executable => 'pg_dump',
         username   => 'foo',
         password   => 'bar',
         host       => 'foo.example.com',
@@ -59,14 +59,14 @@ use Test::PgCLI;
         },
         sub {
             shift;
-            my @cmd = @_;
+            my $cmd = shift;
 
             is(
                 $ENV{PGPASSWORD}, 'bar',
                 'password is set in environment when command runs'
             );
             is_deeply(
-                \@cmd,
+                $cmd,
                 [
                     'pg_dump',
                     '-U', 'foo',
@@ -84,7 +84,7 @@ use Test::PgCLI;
 
 {
     my $pg_dump = Pg::CLI::pg_dump->new(
-        executable => 'foo',
+        executable => 'pg_dump',
         _version   => '8.3.2',
     );
 
@@ -98,10 +98,10 @@ use Test::PgCLI;
         },
         sub {
             shift;
-            my @cmd = @_;
+            my $cmd = shift;
 
             is_deeply(
-                \@cmd,
+                $cmd,
                 [
                     'pg_dump',
                     '-c', 'SELECT 1 FROM foo',
