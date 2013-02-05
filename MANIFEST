@@ -13,10 +13,12 @@ lib/Pg/CLI/Role/Executable.pm
 lib/Pg/CLI/Role/HasVersion.pm
 lib/Pg/CLI/pg_config.pm
 lib/Pg/CLI/pg_dump.pm
+lib/Pg/CLI/pg_restore.pm
 lib/Pg/CLI/psql.pm
 t/lib/Test/PgCLI.pm
 t/pg_config.t
 t/pg_dump.t
+t/pg_restore.t
 t/psql.t
 t/release-cpan-changes.t
 t/release-eol.t

@@ -1,3 +1,8 @@
+0.09    2013-02-05
+
+- Added a Pg::CLI::pg_restore class.
+
+
 0.08    2013-01-23
 
 - The command running code now uses IPC::Run3::run3, so you can pass stdin,
