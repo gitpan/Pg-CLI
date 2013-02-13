@@ -1,6 +1,6 @@
 package Pg::CLI::Role::Connects;
 {
-  $Pg::CLI::Role::Connects::VERSION = '0.09';
+  $Pg::CLI::Role::Connects::VERSION = '0.10';
 }
 
 use Moose::Role;
@@ -45,12 +45,16 @@ sub run {
         [
             $self->executable(),
             $self->_connect_options(),
-            $self->_run_options(),
+            $self->_run_options($database),
             @{$options},
-            $database,
+            ( $self->_database_at_end() ? $database : () ),
         ],
         $stdin, $stdout, $stderr,
     );
+}
+
+sub _database_at_end {
+    return 1;
 }
 
 sub _run_options {

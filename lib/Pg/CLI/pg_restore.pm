@@ -1,6 +1,6 @@
 package Pg::CLI::pg_restore;
 {
-  $Pg::CLI::pg_restore::VERSION = '0.09';
+  $Pg::CLI::pg_restore::VERSION = '0.10';
 }
 
 use Moose;
@@ -12,6 +12,17 @@ use MooseX::SemiAffordanceAccessor;
 use MooseX::Types::Moose qw( ArrayRef Bool Str );
 
 with qw( Pg::CLI::Role::Connects Pg::CLI::Role::Executable );
+
+sub _database_at_end {
+    return 0;
+}
+
+sub _run_options {
+    my $self     = shift;
+    my $database = shift;
+
+    return ( '-d', $database );
+}
 
 __PACKAGE__->meta()->make_immutable();
 
@@ -29,7 +40,7 @@ Pg::CLI::pg_restore - Wrapper for the F<pg_restore> utility
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 

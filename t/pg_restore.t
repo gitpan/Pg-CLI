@@ -26,19 +26,20 @@ use Test::PgCLI;
                 !$ENV{PGPASSWORD},
                 'password is not set in environment when command runs'
             );
+
             is_deeply(
                 $cmd,
                 [
                     'pg_restore',
                     '-w',
+                    '-d', 'Foo',
                     '-c', 'SELECT 1 FROM foo',
-                    'Foo'
                 ],
                 'command includes options and -w, but no other connection info'
             );
         },
-    );
-}
+        );
+    }
 
 {
     my $pg_restore = Pg::CLI::pg_restore->new(
@@ -73,8 +74,8 @@ use Test::PgCLI;
                     '-h', 'foo.example.com',
                     '-p', 5141,
                     '-w',
+                    '-d', 'Foo',
                     '-c', 'SELECT 1 FROM foo',
-                    'Foo'
                 ],
                 'command includes connection info'
             );
@@ -104,8 +105,8 @@ use Test::PgCLI;
                 $cmd,
                 [
                     'pg_restore',
+                    '-d', 'Foo',
                     '-c', 'SELECT 1 FROM foo',
-                    'Foo'
                 ],
                 'command includes connection info, but no -w for Pg < 8.4'
             );

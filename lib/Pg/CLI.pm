@@ -1,6 +1,6 @@
 package Pg::CLI;
 {
-  $Pg::CLI::VERSION = '0.09';
+  $Pg::CLI::VERSION = '0.10';
 }
 
 1;
@@ -17,7 +17,7 @@ Pg::CLI - Run Postgres CLI utilities
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 
@@ -44,6 +44,8 @@ classes:
 =item * L<Pg::CLI::psql>
 
 =item * L<Pg::CLI::pg_dump>
+
+=item * L<Pg::CLI::pg_restore>
 
 =item * L<Pg::CLI::pg_config>
 

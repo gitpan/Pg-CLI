@@ -1,6 +1,6 @@
 package Pg::CLI::Role::HasVersion;
 {
-  $Pg::CLI::Role::HasVersion::VERSION = '0.09';
+  $Pg::CLI::Role::HasVersion::VERSION = '0.10';
 }
 
 use Moose::Role;

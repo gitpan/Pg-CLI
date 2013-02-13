@@ -1,3 +1,9 @@
+0.10    2013-02-13
+
+- Make the pg_restore class actually work. Unlike other Pg CLI commands, with
+  pg_restore the database is passed as "-d Foo", not as the final argument.
+
+
 0.09    2013-02-05
 
 - Added a Pg::CLI::pg_restore class.
