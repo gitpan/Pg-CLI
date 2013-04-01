@@ -1,6 +1,6 @@
-package Pg::CLI::pg_restore;
+package Pg::CLI::dropdb;
 {
-  $Pg::CLI::pg_restore::VERSION = '0.11';
+  $Pg::CLI::dropdb::VERSION = '0.11';
 }
 
 use Moose;
@@ -8,25 +8,15 @@ use Moose;
 use namespace::autoclean;
 
 use MooseX::SemiAffordanceAccessor;
+use MooseX::Types::Moose qw( Str );
 
 with qw( Pg::CLI::Role::Connects Pg::CLI::Role::Executable );
-
-sub _database_at_end {
-    return 0;
-}
-
-sub _run_options {
-    my $self     = shift;
-    my $database = shift;
-
-    return ( '-d', $database );
-}
 
 __PACKAGE__->meta()->make_immutable();
 
 1;
 
-# ABSTRACT: Wrapper for the F<pg_restore> utility
+# ABSTRACT: Wrapper for the F<dropdb> utility
 
 __END__
 
@@ -34,7 +24,7 @@ __END__
 
 =head1 NAME
 
-Pg::CLI::pg_restore - Wrapper for the F<pg_restore> utility
+Pg::CLI::dropdb - Wrapper for the F<dropdb> utility
 
 =head1 VERSION
 
@@ -42,34 +32,26 @@ version 0.11
 
 =head1 SYNOPSIS
 
-  my $pg_restore = Pg::CLI::pg_restore->new(
+  my $dropdb = Pg::CLI::dropdb->new(
       username => 'foo',
       password => 'bar',
       host     => 'pg.example.com',
       port     => 5433,
   );
 
-  $pg_restore->run(
-      database => 'database',
-      options  => [ '-C' ],
-  );
-
-  my $sql;
-  $pg_restore->run(
-      database => 'database',
-      options  => ['-C'],
-      stdin    => \$sql,
+  $dropdb->run(
+      database => 'NewDB',
   );
 
 =head1 DESCRIPTION
 
-This class provides a wrapper for the F<pg_restore> utility.
+This class provides a wrapper for the F<dropdb> utility.
 
 =head1 METHODS
 
 This class provides the following methods:
 
-=head2 Pg::CLI::pg_restore->new( ... )
+=head2 Pg::CLI::dropdb->new( ... )
 
 The constructor accepts a number of parameters:
 
@@ -77,8 +59,8 @@ The constructor accepts a number of parameters:
 
 =item * executable
 
-The path to F<pg_restore>. By default, this will look for F<pg_restore> in your path
-and throw an error if it cannot be found.
+The path to F<dropdb>. By default, this will look for F<dropdb> in your
+path and throw an error if it cannot be found.
 
 =item * username
 
@@ -103,25 +85,30 @@ If this is true, then the C<PGSSLMODE> environment variable will be set to
 
 =back
 
-=head2 $pg_restore->run( database => ..., options => [ ... ] )
+=head2 $dropdb->run( database => $db, ... )
 
-This method restores the specified database. Any values passed in C<options> will
-be passed on to pg_restore.
+This method runs the dropdb command with the given options.
 
 This method also accepts optional C<stdin>, C<stdout>, and C<stderr>
 parameters. These parameters can be any defined value that could be passed as
 the relevant parameter to L<IPC::Run3>'s C<run3> subroutine.
 
-Notably, you can capture the restore output in a scalar reference for the
-C<stdout> output.
+Most notably, you can pass scalar references to pipe data in via the C<stdin>
+parameter or capture output sent to C<stdout> or C<stderr>
 
-=head2 $pg_restore->version()
+This method accepts the following arguments:
 
-Returns a the three part version as a string.
+=over 4
 
-=head2 $pg_restore->two_part_version()
+=item * database
 
-Returns the first two decimal numbers in the version.
+The name of the database to drop. Required.
+
+=item * options
+
+A list of additional options to pass to the command. Optional.
+
+=back
 
 =head1 BUGS
 

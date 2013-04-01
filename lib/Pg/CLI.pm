@@ -1,6 +1,6 @@
 package Pg::CLI;
 {
-  $Pg::CLI::VERSION = '0.10';
+  $Pg::CLI::VERSION = '0.11';
 }
 
 1;
@@ -17,7 +17,7 @@ Pg::CLI - Run Postgres CLI utilities
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 

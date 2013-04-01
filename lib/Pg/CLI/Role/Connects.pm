@@ -1,6 +1,6 @@
 package Pg::CLI::Role::Connects;
 {
-  $Pg::CLI::Role::Connects::VERSION = '0.10';
+  $Pg::CLI::Role::Connects::VERSION = '0.11';
 }
 
 use Moose::Role;
@@ -32,7 +32,7 @@ sub run {
     my $self = shift;
     my ( $database, $options, $stdin, $stdout, $stderr ) = validated_list(
         \@_,
-        database => { isa => Str },
+        database => { isa => Str, optional => 1 },
         options  => {
             isa => ArrayRef [Str], default => [],
         },
@@ -47,7 +47,7 @@ sub run {
             $self->_connect_options(),
             $self->_run_options($database),
             @{$options},
-            ( $self->_database_at_end() ? $database : () ),
+            ( $database && $self->_database_at_end() ? $database : () ),
         ],
         $stdin, $stdout, $stderr,
     );

@@ -11,10 +11,15 @@ lib/Pg/CLI.pm
 lib/Pg/CLI/Role/Connects.pm
 lib/Pg/CLI/Role/Executable.pm
 lib/Pg/CLI/Role/HasVersion.pm
+lib/Pg/CLI/createdb.pm
+lib/Pg/CLI/dropdb.pm
 lib/Pg/CLI/pg_config.pm
 lib/Pg/CLI/pg_dump.pm
 lib/Pg/CLI/pg_restore.pm
 lib/Pg/CLI/psql.pm
+t/author-pod-spell.t
+t/createdb.t
+t/dropdb.t
 t/lib/Test/PgCLI.pm
 t/pg_config.t
 t/pg_dump.t

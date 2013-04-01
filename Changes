@@ -1,3 +1,11 @@
+0.11    2013-04-01
+
+- Added Pg::CLI::createdb and Pg::CLI::dropdb classes.
+
+- Made the database argument optional for Pg::CLI::psql->run(). There are some
+  options (like "psql -l") that don't require a database.
+
+
 0.10    2013-02-13
 
 - Make the pg_restore class actually work. Unlike other Pg CLI commands, with

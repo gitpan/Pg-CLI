@@ -1,15 +1,13 @@
 package Pg::CLI::pg_dump;
 {
-  $Pg::CLI::pg_dump::VERSION = '0.10';
+  $Pg::CLI::pg_dump::VERSION = '0.11';
 }
 
 use Moose;
 
 use namespace::autoclean;
 
-use MooseX::Params::Validate qw( validated_list );
 use MooseX::SemiAffordanceAccessor;
-use MooseX::Types::Moose qw( ArrayRef Bool Str );
 
 with qw( Pg::CLI::Role::Connects Pg::CLI::Role::Executable );
 
@@ -29,7 +27,7 @@ Pg::CLI::pg_dump - Wrapper for the F<pg_dump> utility
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 
